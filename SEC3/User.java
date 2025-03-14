@@ -61,6 +61,10 @@ public class User{
     public int getTelefono(){
         return  telefono;
     }
+
+    public ArrayList<String> getBorrowerList(){
+        return this.borrowerList;
+    }
 }
 
 

@@ -10,18 +10,21 @@ public class LibraryApp {
         while (true) {
             System.out.println("\nLibrary Management System");
             System.out.println("1. Add Book");
-            System.out.println("2. Remove Book");
-            System.out.println("3. Display Books");
-            System.out.println("4. Register Patron");
-            System.out.println("5. View Patrons");
-            System.out.println("6. Borrow Book");
-            System.out.println("7. Return Book");
-            System.out.println("8. Search Books");
-            System.out.println("9. Exit");
+            System.out.println("2. Edit Book"); //This one is new
+            System.out.println("3. Remove Book");
+            System.out.println("4. Display Books");
+            System.out.println("5. Register Patron");
+            System.out.println("6. View Patrons");
+            System.out.println("7. Edit Patron"); //This one is new
+            System.out.println("8. Search Patron"); //This one is new
+            System.out.println("9. Borrow Book");
+            System.out.println("10. Return Book");
+            System.out.println("11. Search Books");
+            System.out.println("12. Exit");
 
             System.out.print("Enter choice: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -39,18 +42,27 @@ public class LibraryApp {
                     System.out.println("Book added!");
                     break;
 
-                case 2:
+
+                case 2: //new for edit
+                    System.out.print("Enter search keyword (title, author, ISBN): ");
+                    String keyword = scanner.nextLine();
+                    bookManagment.editBook(keyword);
+                    break;
+                
+
+                    
+                case 3:
                     System.out.print("Enter Title to remove: ");
                     String removeTitle = scanner.nextLine();
                     bookManagment.removeBook(removeTitle);
                     System.out.println("Book removed (if existed).");
                     break;
 
-                case 3:
+                case 4:
                     bookManagment.displayBooks();
                     break;
 
-                case 4:
+                case 5:
                     System.out.print("Enter Patron Name: ");
                     String patronName = scanner.nextLine();
                     System.out.print("Enter Patron ID: ");
@@ -66,11 +78,25 @@ public class LibraryApp {
                     patronManagement.registerPatron(newUser);
                     break;
 
-                case 5:
+                case 6:
                     patronManagement.viewPatrons();
                     break;
 
-                case 6:
+                case 7: //new
+                    System.out.print("Enter Patron ID to edit: ");
+                    int editId = scanner.nextInt();
+                    scanner.nextLine();
+                    patronManagement.editPatronByID(editId);
+                    break;
+
+                case 8: //new
+                    System.out.print("Enter Patron ID to find: ");
+                    int findID = scanner.nextInt();
+                    scanner.nextLine();
+                    patronManagement.findPatronById(findID);
+                    break;
+                
+                case 9:
                     System.out.print("Enter Patron ID: ");
                     int borrowId = scanner.nextInt();
                     scanner.nextLine();
@@ -100,7 +126,7 @@ public class LibraryApp {
                     }
                     break;
 
-                case 7:
+                case 10:
                     System.out.print("Enter Patron ID: ");
                     int returnId = scanner.nextInt();
                     scanner.nextLine();
@@ -130,13 +156,13 @@ public class LibraryApp {
                     }
                     break;
 
-                case 8:
+                case 11:
                     System.out.print("Enter search keyword (title, author, ISBN): ");
-                    String keyword = scanner.nextLine();
-                    bookManagment.searchBooks(keyword);
+                    String answer1 = scanner.nextLine();
+                    bookManagment.searchBooks(answer1);
                     break;
 
-                case 9:
+                case 12:
                     System.out.println("Exiting Library Management System.");
                     scanner.close();
                     return;

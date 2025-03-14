@@ -14,7 +14,7 @@ public class Book{
         this.title = title;  
         this.author = author;  
         this.ISBN = ISBN;  
-        this.quantityAvailable = quantityAvailable; // Set quantity when creating an item  
+        this.quantityAvailable = quantityAvailable;  
 
     }
 
